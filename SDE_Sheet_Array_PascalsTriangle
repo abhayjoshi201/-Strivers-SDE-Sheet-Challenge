@@ -1,0 +1,55 @@
+class Solution {
+public:
+//                                  !!!!!BRUTE FORCE!!!!!
+//                              ___________________________
+// int nCr(int n, int r)
+// {   
+//     int ans =1;
+//     for(int i=1;i<r;i++)
+//     {
+//         ans=ans*(n-i);
+//         ans=ans/i;
+
+//     }
+//     return ans;
+// }
+// vector<int> rows(int row)
+// {
+//     vector<int> v;
+//     for(int i=1;i<=row;i++)
+//     {
+//         v.push_back(nCr(row,i));
+//     }
+//     return v;
+// }
+//  vector<vector<int>> generate(int numRows) {
+//         vector<vector<int>> ans;
+//         for(int i=1;i<=numRows;i++)
+//         {
+//             ans.push_back(rows(i));
+//         }
+//         return ans;
+//     }
+//                                     !!!OPTIMAL SOLUTION!!!!
+//                                     ________________________
+
+    vector <int> Rows(int n){
+        int ans=1;
+        vector<int> v;
+        v.push_back(1);
+        for(int i=1;i<n;i++){
+            ans=ans*(n-i);
+            ans=ans/i;
+            v.push_back(ans);
+        }
+        return v; 
+    }
+    vector<vector<int>> generate(int numRows) {
+        vector<vector<int>> ans;
+        for(int i=1;i<=numRows;i++)
+        {
+            ans.push_back(Rows(i));
+        }
+        return ans;
+    }
+};
